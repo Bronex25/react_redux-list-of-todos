@@ -10,6 +10,7 @@ export const TodoFilter: React.FC = () => {
   const onChangeStatus = (value: Status) => dispatch(setStatus(value));
   const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) =>
     dispatch(setQuery(event.target.value));
+
   const handleClearQuery = () => dispatch(setQuery(''));
 
   return (

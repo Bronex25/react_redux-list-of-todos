@@ -13,7 +13,7 @@ export const App = () => {
 
   useEffect(() => {
     getTodos().then(fetchedTodos => dispatch(setTodos(fetchedTodos)));
-  });
+  }, []);
 
   return (
     <>

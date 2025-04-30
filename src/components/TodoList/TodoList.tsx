@@ -13,12 +13,12 @@ export const TodoList: React.FC = () => {
 
   const filteredTodos = useMemo(() => {
     if (!todos) {
-      return;
+      return [];
     }
+    const queryToCheck = query.trim().toLowerCase();
 
     return todos.filter(todo => {
       const titleToCheck = todo.title.toLowerCase().trim();
-      const queryToCheck = query.trim().toLowerCase();
       const result = titleToCheck.includes(queryToCheck) || queryToCheck === '';
 
       switch (status) {
@@ -58,7 +58,7 @@ export const TodoList: React.FC = () => {
         <tbody>
 
           {filteredTodos && (filteredTodos.map(todo => (
-          <tr data-cy="todo" className={currentTodo?.id === todo.id ? 'has-background-info-light' : ''}>
+          <tr data-cy="todo" className={currentTodo?.id === todo.id ? 'has-background-info-light' : ''} key={todo.id}>
           <td className="is-vcentered">{todo.id}</td>
           <td className="is-vcentered"> 
             {todo.completed && 
